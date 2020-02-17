@@ -47,9 +47,4 @@ public class Produto implements Serializable {
 		this.preco = preco;
 	}
 
-	
-	
-	
-	
-	
 }

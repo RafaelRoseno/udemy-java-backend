@@ -10,10 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import lombok.Data;
+import lombok.Builder;
 
-@Data
-@Entity
+@Builder
+@Entity(name = "Estado")
 public class Estado implements Serializable {
 	private static final long serialVersionUID = 1L;
 		
@@ -29,18 +29,18 @@ public class Estado implements Serializable {
 //			
 //		}
 
-		public Estado(Integer id, String nome, List<Cidade> cidades) {
-			super();
-			this.id = id;
-			this.nome = nome;
-			this.cidades = cidades;
-		}
-		
-		public Estado(Integer id, String nome) {
-			super();
-			this.id = id;
-			this.nome = nome;
-		}
+//		public Estado(Integer id, String nome, List<Cidade> cidades) {
+//			super();
+//			this.id = id;
+//			this.nome = nome;
+//			this.cidades = cidades;
+//		}
+//		
+//		public Estado(Integer id, String nome) {
+//			super();
+//			this.id = id;
+//			this.nome = nome;
+//		}
 
 		
 	

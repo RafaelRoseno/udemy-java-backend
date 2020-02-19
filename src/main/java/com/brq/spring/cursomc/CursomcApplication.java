@@ -38,46 +38,79 @@ public class CursomcApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		
-		
-//		Categoria cat1 = new Categoria(1, "Informática");
-//		Categoria cat2 = new Categoria(2, "Escritório");
-		
-		Produto p1 = new Produto(null, "Computador", 2000.00);
-		Produto p2 = new Produto (null, "Impressora", 800.00);
-		Produto p3 = new Produto (null, "Mouse", 80.00);
-		
-//		cat1.getProdutos().addAll(Arrays.asList(p1,p2,p3));
-//		cat2.getProdutos().addAll(Arrays.asList(p2));
-		
-		Categoria cat1 = Categoria.builder().id(1)
-				.nome("Informática")
-				.produtos(Arrays.asList(p1, p2, p3))
+
+		Produto p1 = Produto.builder()
+				.nome("Computador")
+				.preco(200.0)
+				.build();
+				
+		Produto p2 = Produto.builder()
+				.nome("Mouse")
+				.preco(20.0)
 				.build();
 		
-		Categoria cat2 = Categoria.builder().id(2)
+		Produto p3 = Produto.builder()
+				.nome("Quadro")
+				.preco(300.0)
+				.build();
+		
+		Categoria cat1 = Categoria.builder()
+				.nome("Informática")
+				.produtos(Arrays.asList(p1,p2,p3))
+				.build();
+		
+		Categoria cat2 = Categoria.builder()
 				.nome("Escritório")
 				.produtos(Arrays.asList(p2))
 				.build();
 		
-	
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
+		produtoRepository.saveAll(Arrays.asList(p1,p2,p3));	
+		
+//		Categoria cat1 = new Categoria(1, "Informática");
+//		Categoria cat2 = new Categoria(2, "Escritório");
+
+//		cat1.getProdutos().addAll(Arrays.asList(p1,p2,p3));
+//		cat2.getProdutos().addAll(Arrays.asList(p2));
 		
 //		p1.getCategorias().addAll(Arrays.asList(cat1));
 //		p2.getCategorias().addAll(Arrays.asList(cat1,cat2));
 //		p3.getCategorias().addAll(Arrays.asList(cat1));
 				
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
-		produtoRepository.saveAll(Arrays.asList(p1,p2,p3));
 		
-		Estado est1 = new Estado(null, "Minas Gerais");
-		Estado est2 = new Estado(null, "São Paulo");
 		
-		Cidade cid1 = new Cidade(null, "Uberlândia", est1 );
-		Cidade cid2 = new Cidade(null, "São Paulo", est2);
-		Cidade cid3 = new Cidade(null, "Campinas", est2);
+		//Estado est1 = new Estado(null, "Minas Gerais");
+		//Estado est2 = new Estado(null, "São Paulo");
 		
-		est1.getCidades().addAll(Arrays.asList(cid1));
-		est2.getCidades().addAll(Arrays.asList(cid2,cid3));
+		//Cidade cid1 = new Cidade(null, "Uberlândia", est1 );
+//		Cidade cid2 = new Cidade(null, "São Paulo", est2);
+//		Cidade cid3 = new Cidade(null, "Campinas", est2);
 		
+		Cidade cid1 = Cidade.builder()
+				.nome("Uberlândia")
+				.build();
+		
+		Cidade cid2 = Cidade.builder()
+				.nome("São Paulo")
+				.build();
+		
+		Cidade cid3 = Cidade.builder()
+				.nome("Campinas")
+				.build();
+		
+		Estado est1 = Estado.builder()
+				.nome("Minas Gerais")
+				.cidades(Arrays.asList(cid1))
+				.build();
+		
+		Estado est2 = Estado.builder()
+				.nome("São Paulo")
+				.cidades(Arrays.asList(cid2,cid3))
+				.build();
+		
+//		est1.getCidades().addAll(Arrays.asList(cid1));
+//		est2.getCidades().addAll(Arrays.asList(cid2,cid3));
+//		
 		estadoRepository.saveAll(Arrays.asList(est1,est2));
 		cidadeRepository.saveAll(Arrays.asList(cid1,cid2,cid3));
 		

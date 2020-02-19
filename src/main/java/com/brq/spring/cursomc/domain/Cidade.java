@@ -9,10 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import lombok.Builder;
 import lombok.Data;
 
-@Data
-@Entity
+@Builder
+@Entity(name = "Cidades")
 public class Cidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -29,12 +30,12 @@ public class Cidade implements Serializable {
 //		
 //	}
 
-	public Cidade(Integer id, String nome, Estado estado) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.estado = estado;
-	}
+//	public Cidade(Integer id, String nome, Estado estado) {
+//		super();
+//		this.id = id;
+//		this.nome = nome;
+//		this.estado = estado;
+//	}
 
 		
 }

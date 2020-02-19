@@ -1,5 +1,5 @@
 
-package com.brq.spring.cursomc.repositories;
+package com.brq.spring.cursomc.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -11,10 +11,10 @@ import com.brq.spring.cursomc.domain.Categoria;
 import com.brq.spring.cursomc.domain.Cidade;
 import com.brq.spring.cursomc.domain.Estado;
 import com.brq.spring.cursomc.domain.Produto;
-import com.brq.spring.cursomc.repositories.CategoriaRepository;
-import com.brq.spring.cursomc.repositories.CidadeRepository;
-import com.brq.spring.cursomc.repositories.EstadoRepository;
-import com.brq.spring.cursomc.repositories.ProdutoRepository;
+import com.brq.spring.cursomc.repository.CategoriaRepository;
+import com.brq.spring.cursomc.repository.CidadeRepository;
+import com.brq.spring.cursomc.repository.EstadoRepository;
+import com.brq.spring.cursomc.repository.ProdutoRepository;
 
 
 @SpringBootApplication
@@ -30,14 +30,25 @@ public class CursomcApplication implements CommandLineRunner {
 	private CidadeRepository cidadeRepository;
 	
 	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
 	}
-	
+
+
+	/*
+	 * Acessar lista de contas: Utils.CONTA()
+	 * 
+	 * Criar 4 endpoints para:
+	 * 	- Cadastrar produto (ProdutoController)
+	 *  - Cadastrar cidade (CidadeController)
+	 *  - Cadastrar estado (EstadoController)
+	 *  - Cadastrar categoria (CategoriaController)
+	 *  
+	 */
+		
 	@Override
 	public void run(String... args) throws Exception {
-
-		
 
 		Produto p1 = Produto.builder()
 				.nome("Computador")
@@ -86,27 +97,29 @@ public class CursomcApplication implements CommandLineRunner {
 //		Cidade cid2 = new Cidade(null, "São Paulo", est2);
 //		Cidade cid3 = new Cidade(null, "Campinas", est2);
 		
-		Cidade cid1 = Cidade.builder()
-				.nome("Uberlândia")
-				.build();
-		
-		Cidade cid2 = Cidade.builder()
-				.nome("São Paulo")
-				.build();
-		
-		Cidade cid3 = Cidade.builder()
-				.nome("Campinas")
-				.build();
-		
 		Estado est1 = Estado.builder()
 				.nome("Minas Gerais")
-				.cidades(Arrays.asList(cid1))
 				.build();
 		
 		Estado est2 = Estado.builder()
 				.nome("São Paulo")
-				.cidades(Arrays.asList(cid2,cid3))
 				.build();
+		
+		Cidade cid1 = Cidade.builder()
+				.nome("Uberlândia")
+				.estado(est1)
+				.build();
+		
+		Cidade cid2 = Cidade.builder()
+				.nome("São Paulo")
+				.estado(est2)
+				.build();
+		
+		Cidade cid3 = Cidade.builder()
+				.nome("Campinas")
+				.estado(est2)
+				.build();
+		
 		
 //		est1.getCidades().addAll(Arrays.asList(cid1));
 //		est2.getCidades().addAll(Arrays.asList(cid2,cid3));

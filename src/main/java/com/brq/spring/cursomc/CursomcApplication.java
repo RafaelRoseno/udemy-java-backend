@@ -49,30 +49,34 @@ public class CursomcApplication implements CommandLineRunner {
 		
 	@Override
 	public void run(String... args) throws Exception {
-
+		
+		
+		
+		Categoria cat1 = Categoria.builder()
+				.nome("Informática")
+				.build();
+		// FAZER A CATEGORIA DENTRO DE PRODUTO DTO
+		
+		Categoria cat2 = Categoria.builder()
+				.nome("Escritório")
+				.build();
+		
 		Produto p1 = Produto.builder()
 				.nome("Computador")
 				.preco(200.0)
+				.categorias(Arrays.asList(cat1))
 				.build();
-				
+		
 		Produto p2 = Produto.builder()
 				.nome("Mouse")
 				.preco(20.0)
+				.categorias(Arrays.asList(cat1,cat2))
 				.build();
 		
 		Produto p3 = Produto.builder()
 				.nome("Quadro")
 				.preco(300.0)
-				.build();
-		
-		Categoria cat1 = Categoria.builder()
-				.nome("Informática")
-				.produtos(Arrays.asList(p1,p2,p3))
-				.build();
-		
-		Categoria cat2 = Categoria.builder()
-				.nome("Escritório")
-				.produtos(Arrays.asList(p2))
+				.categorias(Arrays.asList(cat1))
 				.build();
 		
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));

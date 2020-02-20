@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brq.spring.cursomc.domain.Categoria;
-import com.brq.spring.cursomc.dto.CategoriaDto;
+//import com.brq.spring.cursomc.dto.CategoriaDto;
 import com.brq.spring.cursomc.services.CategoriaService;
 
 @RestController
@@ -19,15 +19,16 @@ public class CategoriaController {
 	private CategoriaService service;
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<CategoriaDto> find(@PathVariable Integer id){
+	public ResponseEntity<?> find(@PathVariable Integer id){
+		//categoriaDto no diamante
 		Categoria obj = service.buscar(id);
 		
-		CategoriaDto categoriaDto = CategoriaDto.builder()
-										.id(obj.getId())
-										.nome(obj.getNome())
-										.build();
+//		CategoriaDto categoriaDto = CategoriaDto.builder()
+//										.id(obj.getId())
+//										.nome(obj.getNome())
+//										.build();
 		
-		return ResponseEntity.ok().body(categoriaDto);
+		return ResponseEntity.ok().body(obj);
 			
 	}
 }

@@ -21,4 +21,9 @@ public class EstadoService {
 				+ ", Tipo: " + Estado.class.getName()));
 	}
 	
+	public Estado insert(Estado obj) {
+	    obj.setId(null);
+	    return estadoRepository.save(obj);
+ }
+	
 }

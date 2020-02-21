@@ -33,26 +33,8 @@ public class Estado implements Serializable {
 		Integer id;
 		String nome;
 		
+		@Builder.Default
 		@OneToMany(mappedBy="estado")
-		List<Cidade> cidades = new ArrayList<>();
-		
-//		public Estado() {
-//			
-//		}
-
-//		public Estado(Integer id, String nome, List<Cidade> cidades) {
-//			super();
-//			this.id = id;
-//			this.nome = nome;
-//			this.cidades = cidades;
-//		}
-//		
-//		public Estado(Integer id, String nome) {
-//			super();
-//			this.id = id;
-//			this.nome = nome;
-//		}
-
-		
+		List<Cidade> cidades = new ArrayList<>();		
 	
 }

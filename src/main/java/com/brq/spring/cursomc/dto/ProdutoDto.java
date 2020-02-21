@@ -1,5 +1,9 @@
 package com.brq.spring.cursomc.dto;
 
+
+
+
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Builder
+@Builder 
 @Getter
 @Setter
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
@@ -19,6 +23,9 @@ public class ProdutoDto {
 	Integer id;
 	String nome;
 	Double preco;
+	
+//	@Builder.Default
+//	List<CategoriaDto> categorias = new ArrayList<>();
 	
 	
 }

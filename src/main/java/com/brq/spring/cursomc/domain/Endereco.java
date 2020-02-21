@@ -10,10 +10,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-@Data
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity(name= "Endereco")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Endereco  implements Serializable {
@@ -36,7 +42,6 @@ public class Endereco  implements Serializable {
 	@JoinColumn(name="cidade_id")
 	Cidade cidade;
 	
-	public Endereco() {}
 
 	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep,
 			Cliente cliente, Cidade cidade) {

@@ -20,5 +20,10 @@ public class CidadeService {
 			return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto " + id + " deu ruim!"
 					+ ", Tipo: " + Cidade.class.getName()));
 		}
+		
+		public Cidade insert(Cidade obj) {
+		    obj.setId(null);
+		    return cidadeRepository.save(obj);
+	 }
 	
 }

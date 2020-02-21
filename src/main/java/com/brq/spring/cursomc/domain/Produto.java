@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
@@ -42,6 +41,7 @@ public class Produto implements Serializable {
 	
 	
 	@JsonIgnore
+	@Builder.Default
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA",
 			joinColumns = @JoinColumn(name = "produto_id"),
@@ -49,15 +49,4 @@ public class Produto implements Serializable {
 	)
 	List<Categoria> categorias = new ArrayList<>();
 	
-//	public Produto() {
-//		
-//	}
-
-//	public Produto(Integer id, String nome, Double preco) {
-//		super();
-//		this.id = id;
-//		this.nome = nome;
-//		this.preco = preco;
-//	}
-
 }

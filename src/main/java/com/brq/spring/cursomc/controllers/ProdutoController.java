@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.brq.spring.cursomc.domain.Produto;
-import com.brq.spring.cursomc.dto.ProdutoDto;
+//import com.brq.spring.cursomc.dto.ProdutoDto;
 import com.brq.spring.cursomc.services.ProdutoService;
 
 @RestController
@@ -25,17 +25,18 @@ public class ProdutoController {
 	private ProdutoService service;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ProdutoDto> find(@PathVariable Integer id){
+	public ResponseEntity<Produto> find(@PathVariable Integer id){
 		
 		Produto produto = service.buscar(id);
 		
-		ProdutoDto produtoDto = ProdutoDto.builder()
-									.id(produto.getId())
-									.nome(produto.getNome())
-									.preco(produto.getPreco())
-									.build();
-		
-		return ResponseEntity.ok(produtoDto);
+//		ProdutoDto produtoDto = ProdutoDto.builder()
+//									.id(produto.getId())
+//									.nome(produto.getNome())
+//									.preco(produto.getPreco())
+//									.categorias(produto.getCategorias())
+//									.build();
+//		
+		return ResponseEntity.ok(produto);
 		
 	}
 

@@ -57,6 +57,7 @@ public class CursomcApplication implements CommandLineRunner {
 	 *  
 	 *  Retornar Categoria/Produto Dto
 	 *  Entender insert na Service
+	 *  TipoCliente não gera o Nº definido no h2
 	 *  
 	 *  
 	 */
@@ -127,7 +128,7 @@ public class CursomcApplication implements CommandLineRunner {
 				.nome("Maria Silva")
 				.email("MariaSilva@gmail.com")
 				.cpfOuCnpj("123 456 789 99")
-				.tipo(TipoCliente.PESSOAJURIDICA)
+				.tipo(TipoCliente.PESSOAFISICA)
 				.build();
 		
 		cliente1.getTelefone().addAll(Arrays.asList("10202010","99858599"));

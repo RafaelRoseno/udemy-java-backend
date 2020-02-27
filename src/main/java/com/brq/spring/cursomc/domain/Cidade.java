@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -29,6 +30,7 @@ import lombok.experimental.FieldDefaults;
 public class Cidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@JsonManagedReference
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Integer id;

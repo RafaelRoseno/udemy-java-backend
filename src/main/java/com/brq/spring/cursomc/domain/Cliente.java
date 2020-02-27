@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.brq.spring.cursomc.domain.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -42,6 +43,7 @@ public class Cliente  implements Serializable {
 	String cpfOuCnpj;
 	TipoCliente tipo;
 	
+	@JsonManagedReference
 	@Builder.Default
 	@OneToMany(mappedBy = "cliente")
 	List<Endereco> enderecos = new ArrayList<>();

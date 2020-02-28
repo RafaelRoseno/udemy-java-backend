@@ -1,5 +1,6 @@
 package com.brq.spring.cursomc;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,20 @@ import com.brq.spring.cursomc.domain.Cidade;
 import com.brq.spring.cursomc.domain.Cliente;
 import com.brq.spring.cursomc.domain.Endereco;
 import com.brq.spring.cursomc.domain.Estado;
+import com.brq.spring.cursomc.domain.Pagamento;
+import com.brq.spring.cursomc.domain.PagamentoComBoleto;
+import com.brq.spring.cursomc.domain.PagamentoComCartao;
+import com.brq.spring.cursomc.domain.Pedido;
 import com.brq.spring.cursomc.domain.Produto;
+import com.brq.spring.cursomc.domain.enums.EstadoPagamento;
 import com.brq.spring.cursomc.domain.enums.TipoCliente;
 import com.brq.spring.cursomc.repository.CategoriaRepository;
 import com.brq.spring.cursomc.repository.CidadeRepository;
 import com.brq.spring.cursomc.repository.ClienteRepository;
 import com.brq.spring.cursomc.repository.EnderecoRepository;
 import com.brq.spring.cursomc.repository.EstadoRepository;
+import com.brq.spring.cursomc.repository.PagamentoRepository;
+import com.brq.spring.cursomc.repository.PedidoRepository;
 import com.brq.spring.cursomc.repository.ProdutoRepository;
 
 
@@ -37,6 +45,10 @@ public class CursomcApplication implements CommandLineRunner {
 	private EnderecoRepository enderecoRepository;
 	@Autowired
 	private ClienteRepository clienteRepository;
+	@Autowired
+	private PagamentoRepository pagamentoRepository;
+	@Autowired
+	private PedidoRepository pedidoRepository;
 	
 	
 	
@@ -158,6 +170,51 @@ public class CursomcApplication implements CommandLineRunner {
 		
 		clienteRepository.saveAll(Arrays.asList(cliente1));
 		enderecoRepository.saveAll(Arrays.asList(endereco1,endereco2));		
+		
+		SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		
+		Pedido pedido1 = Pedido.builder()
+				.instante(date.parse("30/09/2019 10:32"))
+				.cliente(cliente1)
+				.enderecoEntrega(endereco1)
+				.build();
+		
+		Pedido pedido2 = Pedido.builder()
+				.instante(date.parse("10/10/2019 19:35"))
+				.cliente(cliente1)
+				.enderecoEntrega(endereco2)
+				.build();
+		
+		Pagamento pagamento1 = PagamentoComCartao.builder()
+				.estado(EstadoPagamento.QUITADO)
+				.pedido(pedido1)
+				.numeroParcelas(6)
+				.build();
+		
+		pedido1.setPagamento(pagamento1);
+		
+		Pagamento pagamento2 = PagamentoComBoleto.builder()
+				.estado(EstadoPagamento.PENDENTE)
+				.pedido(pedido2)
+				.dataVencimento(date.parse("24/10/2019 00:00"))
+				.build();
+		
+		pedido2.setPagamento(pagamento2);
+		
+		cliente1.getPedidos().addAll(Arrays.asList(pedido1,pedido2));
+		
+		pedidoRepository.saveAll(Arrays.asList(pedido1,pedido2));
+		pagamentoRepository.saveAll(Arrays.asList(pagamento1,pagamento2));
+		
+				
+				
+				
+				
+		
+		
+		
+		
+		
 	}
 }
 		

@@ -93,19 +93,19 @@ public class CursomcApplication implements CommandLineRunner {
 		
 		Produto p1 = Produto.builder()
 				.nome("Computador")
-				.preco(200.0)
+				.preco(2000.0)
 				.categorias(Arrays.asList(cat1))
 				.build();
 		
 		Produto p2 = Produto.builder()
 				.nome("Mouse")
-				.preco(20.0)
+				.preco(80.0)
 				.categorias(Arrays.asList(cat1,cat2))
 				.build();
 		
 		Produto p3 = Produto.builder()
 				.nome("Quadro")
-				.preco(300.0)
+				.preco(80.0)
 				.categorias(Arrays.asList(cat1))
 				.build();
 		

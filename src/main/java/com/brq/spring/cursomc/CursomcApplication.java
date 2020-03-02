@@ -230,7 +230,7 @@ public class CursomcApplication implements CommandLineRunner {
 				.produto(p2)
 				.desconto(100.00)
 				.quantidade(1)
-				.preco(800.00)
+				.preco(80.00)
 				.build();
 		pedido1.getItens().addAll(Arrays.asList(itemPedido1,itemPedido2));
 		pedido2.getItens().addAll(Arrays.asList(itemPedido3));

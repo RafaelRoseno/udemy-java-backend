@@ -2,7 +2,6 @@ package com.brq.spring.cursomc;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +12,7 @@ import com.brq.spring.cursomc.domain.Cidade;
 import com.brq.spring.cursomc.domain.Cliente;
 import com.brq.spring.cursomc.domain.Endereco;
 import com.brq.spring.cursomc.domain.Estado;
+import com.brq.spring.cursomc.domain.ItemPedido;
 import com.brq.spring.cursomc.domain.Pagamento;
 import com.brq.spring.cursomc.domain.PagamentoComBoleto;
 import com.brq.spring.cursomc.domain.PagamentoComCartao;
@@ -25,6 +25,7 @@ import com.brq.spring.cursomc.repository.CidadeRepository;
 import com.brq.spring.cursomc.repository.ClienteRepository;
 import com.brq.spring.cursomc.repository.EnderecoRepository;
 import com.brq.spring.cursomc.repository.EstadoRepository;
+import com.brq.spring.cursomc.repository.ItemPedidoRepository;
 import com.brq.spring.cursomc.repository.PagamentoRepository;
 import com.brq.spring.cursomc.repository.PedidoRepository;
 import com.brq.spring.cursomc.repository.ProdutoRepository;
@@ -49,6 +50,8 @@ public class CursomcApplication implements CommandLineRunner {
 	private PagamentoRepository pagamentoRepository;
 	@Autowired
 	private PedidoRepository pedidoRepository;
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	
 	
@@ -206,8 +209,38 @@ public class CursomcApplication implements CommandLineRunner {
 		pedidoRepository.saveAll(Arrays.asList(pedido1,pedido2));
 		pagamentoRepository.saveAll(Arrays.asList(pagamento1,pagamento2));
 		
-				
-				
+		ItemPedido itemPedido1 = ItemPedido.builder()
+				.pedido(pedido1)
+				.produto(p1)
+				.desconto(0.00)
+				.quantidade(1)
+				.preco(2000.00)
+				.build();
+		
+		ItemPedido itemPedido2 = ItemPedido.builder()
+				.pedido(pedido1)
+				.produto(p3)
+				.desconto(0.00)
+				.quantidade(2)
+				.preco(80.00)
+				.build();
+		
+		ItemPedido itemPedido3 = ItemPedido.builder()
+				.pedido(pedido2)
+				.produto(p2)
+				.desconto(100.00)
+				.quantidade(1)
+				.preco(800.00)
+				.build();
+		pedido1.getItens().addAll(Arrays.asList(itemPedido1,itemPedido2));
+		pedido2.getItens().addAll(Arrays.asList(itemPedido3));
+		
+		p1.getItens().addAll(Arrays.asList(itemPedido1));
+		p2.getItens().addAll(Arrays.asList(itemPedido3));
+		p3.getItens().addAll(Arrays.asList(itemPedido2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(itemPedido1,itemPedido2,itemPedido3));	
+		
 				
 				
 		

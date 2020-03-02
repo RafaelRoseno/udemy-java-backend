@@ -38,7 +38,7 @@ public class EstadoController {
 				
 		}
 	
-	@PostMapping(value = "/insere-estado")
+	@PostMapping(value = "/insere")
 	public ResponseEntity<Void> insert(@RequestBody Estado obj ){
 				
 		obj = estadoService.insert(obj);

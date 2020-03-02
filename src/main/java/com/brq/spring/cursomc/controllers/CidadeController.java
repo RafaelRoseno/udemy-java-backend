@@ -36,7 +36,7 @@ public class CidadeController {
 		return ResponseEntity.ok(cidadeDto);
 	}
 	
-	@PostMapping(value = "/insere-cidade")
+	@PostMapping(value = "/insere")
 	public ResponseEntity<Void> insert(@RequestBody Cidade obj ){
 				
 		obj = cidadeService.insert(obj);

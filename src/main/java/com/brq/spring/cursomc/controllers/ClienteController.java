@@ -26,13 +26,13 @@ public class ClienteController {
 	@GetMapping(value="/{id}")
 	public ResponseEntity<?> find(@PathVariable Integer id){
 		//categoriaDto no diamante
-		Cliente obj = service.buscar(id);
+		Cliente obj = service.find(id);
 		
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	
-	@PostMapping(value = "/insere-cliente")
+	@PostMapping(value = "/insere")
 	public ResponseEntity<Void> insert(@RequestBody Cliente obj ){
 				
 		obj = service.insert(obj);

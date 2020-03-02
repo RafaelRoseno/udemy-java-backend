@@ -27,7 +27,7 @@ public class ProdutoController {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Produto> find(@PathVariable Integer id){
 		
-		Produto produto = service.buscar(id);
+		Produto produto = service.find(id);
 		
 //		ProdutoDto produtoDto = ProdutoDto.builder()
 //									.id(produto.getId())
@@ -41,7 +41,7 @@ public class ProdutoController {
 	}
 
 	
-	@PostMapping(value = "/insere-produto")
+	@PostMapping(value = "/insere")
 	public ResponseEntity<Void> insert(@RequestBody Produto obj ){
 				
 		obj = service.insert(obj);

@@ -26,7 +26,7 @@ public class PedidoController {
 	@GetMapping(value="/{id}")
 	public ResponseEntity<?> find(@PathVariable Integer id){
 		//categoriaDto no diamante
-		Pedido obj = service.buscar(id);
+		Pedido obj = service.find(id);
 		
 //		PedidoDto categoriaDto = PedidoDto.builder()
 //										.id(obj.getId())
@@ -37,7 +37,7 @@ public class PedidoController {
 	}
 	
 	
-	@PostMapping(value = "/insere-categoria")
+	@PostMapping(value = "/insere")
 	public ResponseEntity<Void> insert(@RequestBody Pedido obj ){
 				
 		obj = service.insert(obj);

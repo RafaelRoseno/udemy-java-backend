@@ -11,7 +11,7 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.brq.spring.cursomc.domain.enums.EstadoPagamento;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -33,7 +33,7 @@ public abstract class Pagamento implements Serializable {
 	Integer estadoPagamento;
 	
 	@OneToOne
-	@JsonBackReference
+	@JsonIgnore
 	@JoinColumn(name="pedido_id")
 	@MapsId
 	Pedido pedido;

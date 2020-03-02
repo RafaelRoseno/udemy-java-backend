@@ -15,8 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.brq.spring.cursomc.domain.enums.TipoCliente;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -44,7 +43,6 @@ public class Cliente  implements Serializable {
 	String cpfOuCnpj;
 	TipoCliente tipo;
 	
-	@JsonManagedReference
 	@Builder.Default
 	@OneToMany(mappedBy = "cliente")
 	List<Endereco> enderecos = new ArrayList<>();
@@ -55,7 +53,7 @@ public class Cliente  implements Serializable {
 	Set<String> telefone = new HashSet<>();
 	
 	@Builder.Default
-	@JsonBackReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	List<Pedido> pedidos = new ArrayList<>();
 

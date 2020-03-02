@@ -27,12 +27,6 @@ public class CategoriaController {
 	public ResponseEntity<?> find(@PathVariable Integer id){
 		//categoriaDto no diamante
 		Categoria obj = service.buscar(id);
-		
-//		CategoriaDto categoriaDto = CategoriaDto.builder()
-//										.id(obj.getId())
-//										.nome(obj.getNome())
-//										.build();
-		
 		return ResponseEntity.ok().body(obj);
 	}
 	
@@ -47,4 +41,12 @@ public class CategoriaController {
 				.toUri();
 		return ResponseEntity.created(uri).build();	
 	}
+	
+	
+	
+//	CategoriaDto categoriaDto = CategoriaDto.builder()
+//									.id(obj.getId())
+//									.nome(obj.getNome())
+//									.build();
+	
 }

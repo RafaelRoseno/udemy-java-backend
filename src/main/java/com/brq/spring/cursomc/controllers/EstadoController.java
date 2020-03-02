@@ -42,7 +42,10 @@ public class EstadoController {
 	public ResponseEntity<Void> insert(@RequestBody Estado obj ){
 				
 		obj = estadoService.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(obj.getId())
+				.toUri();
 		return ResponseEntity.created(uri).build();	
 	}
 	
